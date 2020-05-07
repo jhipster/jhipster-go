@@ -1,4 +1,4 @@
-# GoHipster
+# GoHipster - Work in progress
 [![NPM version][npm-image]][npm-url] [![Build Status][travis-image]][travis-url] [![Dependency Status][daviddm-image]][daviddm-url]
 > JHipster blueprint, A JHipster blueprint that will provide Golang as the server side language
 
