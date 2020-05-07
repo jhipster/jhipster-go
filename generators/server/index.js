@@ -4,22 +4,23 @@ const ServerGenerator = require('generator-jhipster/generators/server');
 
 module.exports = class extends ServerGenerator {
     constructor(args, opts) {
-        super(args, Object.assign({ fromBlueprint: true }, opts)); // fromBlueprint variable is important
+        super(args, { fromBlueprint: true, ...opts }); // fromBlueprint variable is important
 
-        const jhContext = this.jhipsterContext = this.options.jhipsterContext;
+        const jhContext = (this.jhipsterContext = this.options.jhipsterContext);
 
         if (!jhContext) {
             this.error(`This is a JHipster blueprint and should be used only like ${chalk.yellow('jhipster --blueprint go')}`);
         }
 
         this.configOptions = jhContext.configOptions || {};
+
         // This sets up options for this sub generator and is being reused from JHipster
         jhContext.setupServerOptions(this, jhContext);
     }
 
     get initializing() {
         /**
-         * Any method beginning with _ can be reused from the superclass `ClientGenerator`
+         * Any method beginning with _ can be reused from the superclass `ServerGenerator`
          *
          * There are multiple ways to customize a phase from JHipster.
          *
@@ -76,6 +77,11 @@ module.exports = class extends ServerGenerator {
     get writing() {
         // Here we are not overriding this phase and hence its being handled by JHipster
         return super._writing();
+    }
+
+    get install() {
+        // Here we are not overriding this phase and hence its being handled by JHipster
+        return super._install();
     }
 
     get end() {
